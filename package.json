@@ -1,8 +1,8 @@
 {
-  "name": "Periodic Table",
+  "name": "periodicTable",
   "description": "",
   "author": "kinjalik",
-  "repository": "gitlab:kinjalik/nika-service",
+  "repository": "github:kinjalik/periodicTable",
   "license": "UNLICENSED",
   "dependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
@@ -12,6 +12,9 @@
     "autoprefixer": "^7.1.6",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
+    "eslint": "4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "2.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.0",
     "gulp-debug": "^3.1.0",
@@ -26,5 +29,11 @@
     "gulp-uglify": "^3.0.0",
     "native-notifier": "^0.1.1",
     "pump": "^1.0.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
   }
 }
