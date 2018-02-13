@@ -145,6 +145,10 @@ class PeriodicTableUI extends PeriodicTable {
     }
     document.querySelector('[data-popup-element="numberOfLevels"]').innerHTML = openedElement.numberOfLevels;
 
+    for (let i = 0; i < 7; i += 1) {
+      document.querySelector(`[data-popup-element="level-${i + 1}"]`).style.display = 'block';
+    }
+
     for (let i = parseInt(openedElement.numberOfLevels, 10); i < 7; i += 1) {
       document.querySelector(`[data-popup-element="level-${i + 1}"]`).style.display = 'none';
     }
