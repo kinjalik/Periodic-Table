@@ -1,33 +1,4 @@
-/**
- * Constructor of object with element of periodic tabl
- *
- * @class      Element
- * @param      {string}   n         The Name
- * @param      {string}   f         The Formula
- * @param      {number}   p         The Period
- * @param      {number}   g         The Group
- * @param      {string}   sg        The Subgroup
- * @param      {number}   aN        The Atomic Number
- * @param      {boolean}  isMetall  Indicates if metall
- * @param      {number}   NOL       The Number of Electron Levels
- * @param      {array}    EOL       The Number of Electrons on each Electron
- *                                  Level
- * @param      {string}   type      Electron Level Type of Element
- * @param      {number}   aM        The Atmoic Mass of Element (float value)
- */
-function Element() {
-  this.name = n;
-  this.formula = f;
-  this.period = p;
-  this.group = g;
-  this.subgroup = sg;
-  this.atomicNumber = aN;
-  this.isMetall = isMetall;
-  this.numberOfLevels = NOL;
-  this.electronsOnLevels = EOL;
-  this.type = type;
-  this.atomicMass = aM;
-}
+
 
 /**
  * Class for periodic table.
@@ -71,6 +42,23 @@ class PeriodicTable {
     }
   }
 
+  /**
+   * Constructor of object with element of periodic tabl
+   *
+   * @class      Element
+   * @param      {string}   n         The Name
+   * @param      {string}   f         The Formula
+   * @param      {number}   p         The Period
+   * @param      {number}   g         The Group
+   * @param      {string}   sg        The Subgroup
+   * @param      {number}   aN        The Atomic Number
+   * @param      {boolean}  isMetall  Indicates if metall
+   * @param      {number}   NOL       The Number of Electron Levels
+   * @param      {array}    EOL       The Number of Electrons on each Electron
+   *                                  Level
+   * @param      {string}   type      Electron Level Type of Element
+   * @param      {number}   aM        The Atmoic Mass of Element (float value)
+  */
   newElement(n, f, p, g, sg, aN, isMetall, NOL, EOL, type, aM) {
     return {
       name: n,
