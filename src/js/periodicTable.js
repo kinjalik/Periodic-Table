@@ -6,40 +6,42 @@
 class PeriodicTable {
   constructor() {
     /* [START] XHR REQUEST OF elements.json */
-    let request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', 'elements.json', false);
     request.send();
-    if (request.status != 200) {
-      console.log(request.status + ': ' + request.statusText);
-      return false;
+    if (request.status !== 200) {
+      console.error(`${request.status}: ${request.statusText}`);
     } else {
       this.elements = JSON.parse(request.response);
     }
     /* [END] XHR REQUEST OF elements.json */
   }
-  
+
   getChemElemByFormula(formula) {
-    for (let elem of this.elements) {
-      if (elem.formula = formula) {
+    for (const elem of this.elements) {
+      if (elem.formula === formula) {
         return elem;
       }
     }
+    return true;
   }
 
   getChemElemByName(name) {
-    for (let elem of this.elements) {
-      if (elem.name = name) {
+    for (const elem of this.elements) {
+      if (elem.name === name) {
         return elem;
       }
     }
+    return true;
   }
 
   getChemElemByGroupAndPeriod(group, period) {
-    for (let elem of this.elements) {
+    for (const elem of this.elements) {
       if (elem.group === group && elem.period === period) {
         return elem;
       }
     }
+    return true;
   }
 
   /**
@@ -67,12 +69,12 @@ class PeriodicTable {
       group: g,
       subgroup: sg,
       atomicNumber: aN,
-      isMetall: isMetall,
+      isMetall,
       numberOfLevels: NOL,
       electronsOnLevels: EOL,
-      type: type,
-      atomicMass: aM
-    }
+      type,
+      atomicMass: aM,
+    };
   }
 }
 
@@ -87,9 +89,13 @@ class PeriodicTableUI extends PeriodicTable {
       for (const element of this.elements) {
         if (cell.dataset.periodicElement === element.formula) {
           let subgroup = '';
-          element.subgroup === 'A' ? subgroup = 'element__main-group' : subgroup = 'element__secondary-group';
+          if (element.subgroup === 'A') {
+            subgroup = 'element__main-group';
+          } else {
+            subgroup = 'element__secondary-group';
+          }
           let type = '';
-          switch(element.type) {
+          switch (element.type) {
             case 's':
               type = 'element_s-type';
               break;
@@ -121,7 +127,7 @@ class PeriodicTableUI extends PeriodicTable {
     for (const el of this.elements) {
       if (el.formula === element) {
         openedElement = el;
-      };
+      }
     }
     const body = document.querySelector('body');
     body.style.overflow = 'hidden';
@@ -140,12 +146,12 @@ class PeriodicTableUI extends PeriodicTable {
     }
     document.querySelector('[data-popup-element="numberOfLevels"]').innerHTML = openedElement.numberOfLevels;
 
-    for (let i = parseInt(openedElement.numberOfLevels); i < 7; i++) {
-      document.querySelector(`[data-popup-element="level-${i+1}"]`).style.display = 'none';
+    for (let i = parseInt(openedElement.numberOfLevels, 10); i < 7; i += 1) {
+      document.querySelector(`[data-popup-element="level-${i + 1}"]`).style.display = 'none';
     }
 
-    for (let i = 0; i < parseInt(openedElement.numberOfLevels); i++) {
-      document.querySelector(`[data-popup-element="level-${i+1}"]`).innerHTML = openedElement.electronsOnLevels[i];
+    for (let i = 0; i < parseInt(openedElement.numberOfLevels, 10); i += 1) {
+      document.querySelector(`[data-popup-element="level-${i + 1}"]`).innerHTML = openedElement.electronsOnLevels[i];
     }
     const closeButton = document.querySelector('#elementPopup .popup__close-button');
     closeButton.addEventListener('click', () => {
