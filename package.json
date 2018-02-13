@@ -3,7 +3,7 @@
   "description": "",
   "author": "kinjalik",
   "repository": "github:kinjalik/periodicTable",
-  "license": "UNLICENSED",
+  "license": "CC-SA 4.0",
   "dependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
     "node-notifier": "^5.1.2"
