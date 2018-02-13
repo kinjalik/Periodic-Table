@@ -15,7 +15,7 @@
  * @param      {string}   type      Electron Level Type of Element
  * @param      {number}   aM        The Atmoic Mass of Element (float value)
  */
-function Element(n, f, p, g, sg, aN, isMetall, NOL, EOL, type, aM) {
+function Element() {
   this.name = n;
   this.formula = f;
   this.period = p;
@@ -31,8 +31,6 @@ function Element(n, f, p, g, sg, aN, isMetall, NOL, EOL, type, aM) {
 
 /**
  * Class for periodic table.
- *
- * @class      PeriodicTable (name)
  */
 class PeriodicTable {
   constructor() {
@@ -43,14 +41,60 @@ class PeriodicTable {
     if (request.status != 200) {
       console.log(request.status + ': ' + request.statusText);
       return false;
+    } else {
+      this.elements = JSON.parse(request.response);
     }
     /* [END] XHR REQUEST OF elements.json */
-
-    this.elements = JSON.parse(request.responseText)
   }
-  // Методы таблицы...
+  
+  getChemElemByFormula(formula) {
+    for (let elem of this.elements) {
+      if (elem.formula = formula) {
+        return elem;
+      }
+    }
+  }
+
+  getChemElemByName(name) {
+    for (let elem of this.elements) {
+      if (elem.name = name) {
+        return elem;
+      }
+    }
+  }
+
+  getChemElemByGroupAndPeriod(group, period) {
+    for (let elem of this.elements) {
+      if (elem.group === group && elem.period === period) {
+        return elem;
+      }
+    }
+  }
+
+  newElement(n, f, p, g, sg, aN, isMetall, NOL, EOL, type, aM) {
+    return {
+      name: n,
+      formula: f,
+      period: p,
+      group: g,
+      subgroup: sg,
+      atomicNumber: aN,
+      isMetall: isMetall,
+      numberOfLevels: NOL,
+      electronsOnLevels: EOL,
+      type: type,
+      atomicMass: aM
+    }
+  }
+}
+
+/**
+ * Class for periodic table UI.
+ */
+class PeriodicTableUI extends PeriodicTable {
+  // Filling element's info into cells
   buildTable() {
-    const elementCells = document.querySelectorAll('[data-periodic-element]');
+    const elementCells = document.querySelectorAll('[data-periodic-element]'); // Array of all cell for elements
     for (const cell of elementCells) {
       for (const element of this.elements) {
         if (cell.dataset.periodicElement === element.formula) {
@@ -83,15 +127,7 @@ class PeriodicTable {
     }
   }
 
-  addListenersToCells() {
-    const elementCells = document.querySelectorAll('[data-periodic-element]');
-    for (const cell of elementCells) {
-      cell.addEventListener('click', () => {
-        this.openElementWindow(cell.dataset.periodicElement);
-      });
-    }
-  }
-
+  // Opening window with element data
   openElementWindow(element) {
     let openedElement = {};
     for (const el of this.elements) {
@@ -129,14 +165,27 @@ class PeriodicTable {
     });
   }
 
+  // Closing window with element
   closeElementWindow() {
     const body = document.querySelector('body');
     body.style.overflow = 'auto';
     const elementPopup = document.querySelector('#elementPopup');
     elementPopup.style.display = 'none';
   }
+
+  // Setting listeners to element's cells
+  addListenersToCells() {
+    const elementCells = document.querySelectorAll('[data-periodic-element]');
+    for (const cell of elementCells) {
+      cell.addEventListener('click', () => {
+        this.openElementWindow(cell.dataset.periodicElement);
+      });
+    }
+  }
 }
+
 
 /* eslint-disable */ // Потому что на создание экземпляра класса линтер ругаица
 const periodicTable = new PeriodicTable();
+const periodicTableUI = new PeriodicTableUI(periodicTable);
 /* eslint-enable */
