@@ -3,9 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Периодическая таблица</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500&amp;subset=cyrillic" rel="stylesheet"> 
-	<!-- <link rel="stylesheet" href="css/grid.css"> -->
+	<link rel="stylesheet" href="css/periodicTable.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500&amp;subset=cyrillic" rel="stylesheet">
 </head> 
 <body class=''>
 
@@ -120,7 +119,7 @@
 				<td class="period-table__row-title">8</td>
 				<td data-periodic-element="Cs"></td>
 				<td data-periodic-element="Ba"></td>
-				<td>Лантаноиды</td>
+				<td data-periodic-element="La"></td>
 				<td data-periodic-element="Hf"></td>
 				<td data-periodic-element="Ta"></td>
 				<td data-periodic-element="W"></td>
@@ -147,7 +146,7 @@
 				<td class="period-table__row-title">10</td>
 				<td data-periodic-element="Fr"></td>
 				<td data-periodic-element="Ra"></td>
-				<td>Актиноиды</td>
+				<td data-periodic-element="Ac"></td>
 				<td data-periodic-element="Rf"></td>
 				<td data-periodic-element="Db"></td>
 				<td data-periodic-element="Sg"></td>
@@ -156,6 +155,54 @@
 				<td data-periodic-element="Mt"></td>
 				<td data-periodic-element="Ds"></td>
 				<td colspan="1"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="periodic-table periodic-table_lan-act-line">
+		<thead>
+			<th class='period-table__row-title' colspan="14">Лантанодиы</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td data-periodic-element="Ce"></td>
+				<td data-periodic-element="Pr"></td>
+				<td data-periodic-element="Nd"></td>
+				<td data-periodic-element="Pm"></td>
+				<td data-periodic-element="Sm"></td>
+				<td data-periodic-element="Eu"></td>
+				<td data-periodic-element="Gd"></td>
+				<td data-periodic-element="Tb"></td>
+				<td data-periodic-element="Dy"></td>
+				<td data-periodic-element="Ho"></td>
+				<td data-periodic-element="Er"></td>
+				<td data-periodic-element="Tm"></td>
+				<td data-periodic-element="Yb"></td>
+				<td data-periodic-element="Lu"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="periodic-table periodic-table_lan-act-line">
+		<thead>
+			<th class='period-table__row-title' colspan="14">Актиноиды</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td data-periodic-element="Th"></td>
+				<td data-periodic-element="Pa"></td>
+				<td data-periodic-element="U"></td>
+				<td data-periodic-element="Np"></td>
+				<td data-periodic-element="Pu"></td>
+				<td data-periodic-element="Am"></td>
+				<td data-periodic-element="Cm"></td>
+				<td data-periodic-element="Bk"></td>
+				<td data-periodic-element="Cf"></td>
+				<td data-periodic-element="Es"></td>
+				<td data-periodic-element="Fm"></td>
+				<td data-periodic-element="Md"></td>
+				<td data-periodic-element="No"></td>
+				<td data-periodic-element="Lr"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -169,6 +216,8 @@
 					<ul>
 						<li>Формула: <span data-popup-element="formula"></span></li>
 						<li>Порядковый номер:  <span data-popup-element="atomicNumber"></span></li>
+						<li>Атомная масса: <span data-popup-element="atomicMass"></span></li>
+						<br>
 						<li>Период: <span data-popup-element="period"></span> </li>
 						<li>Группа, подгруппа:  <span data-popup-element="group"></span></li>
 						<li>Количество электронных уровней:  <span data-popup-element="numberOfLevels"></span></li>
@@ -191,7 +240,7 @@
 		</div>
 	</div>
 
-	<script src="js/elementsJSON.js"></script>
+	<script src="js/periodicTable.js"></script>
 	<script>
 		periodicTable.buildTable();
 		periodicTable.addListenersToCells();
