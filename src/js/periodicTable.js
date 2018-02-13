@@ -132,7 +132,6 @@ class PeriodicTableUI extends PeriodicTable {
     const body = document.querySelector('body');
     body.style.overflow = 'hidden';
     const elementPopup = document.querySelector('#elementPopup');
-    elementPopup.style.display = 'block';
     document.querySelector('[data-popup-element="name"]').innerHTML = openedElement.name;
     document.querySelector('[data-popup-element="formula"]').innerHTML = openedElement.formula;
     document.querySelector('[data-popup-element="atomicNumber"]').innerHTML = openedElement.atomicNumber;
@@ -154,9 +153,7 @@ class PeriodicTableUI extends PeriodicTable {
       document.querySelector(`[data-popup-element="level-${i + 1}"]`).innerHTML = openedElement.electronsOnLevels[i];
     }
     const closeButton = document.querySelector('#elementPopup .popup__close-button');
-    closeButton.addEventListener('click', () => {
-      this.closeElementWindow();
-    });
+    elementPopup.style.display = 'block';
   }
 
   // Closing window with element
